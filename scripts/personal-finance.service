@@ -1,0 +1,31 @@
+[Unit]
+Description=numa - Personal Finance Platform (Next.js Standalone)
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/numa/.next/standalone
+EnvironmentFile=/var/www/numa/.next/standalone/.env.production
+ExecStart=/usr/bin/node /var/www/numa/.next/standalone/server.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=numa
+
+# Security sandbox
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits strictly tailored for 1 vCPU / 2GB RAM VPS budget
+MemoryHigh=750M
+MemoryMax=1G
+CPUQuota=90%
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,43 @@
+# Dependencies
+/node_modules
+/.pnpm-store
+
+# Next.js build output
+/.next/
+/out/
+build/
+dist/
+
+# Standalone traces
+deploy.tar.gz
+
+# Environment & Secret files
+.env
+.env*.local
+.env.production
+*.pem
+*.key
+*.secret
+
+# Sensitive data stores (sessions, credentials, database, vault)
+data/
+data/*.json
+vault_secrets.json
+auth_store.json
+financial_store.json
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing & Coverage
+coverage/
+
+# OS and IDE files
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

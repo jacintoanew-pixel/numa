@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #f5f5f7;              /* Pale Apple Gray */
+    --color-canvas: #ffffff;          /* Pure White Canvas */
+    --color-surface: #ffffff;         /* Pure White Canvas */
+    --color-surface-subtle: #fbfbfd;  /* Surface Warm */
+    --color-surface-elevated: #ffffff;
+    
+    --color-fg: #1d1d1f;              /* Near Black Ink */
+    --color-fg-2: #424245;            /* Utility Dark Gray */
+    --color-fg-muted: #6e6e73;        /* Secondary Neutral Gray */
+    --color-fg-subtle: #86868b;       /* Mid Border Gray */
+    
+    --color-border: #e8e8ed;          /* Border Soft */
+    --color-border-strong: #d2d2d7;   /* Soft Border Gray */
+    
+    --color-accent: #0071e3;          /* Apple Action Blue */
+    --color-accent-hover: #0077ed;
+    --color-accent-active: #0066cc;   /* Body Link Blue */
+    --color-accent-light: #2997ff;    /* High Luminance Link Blue */
+    
+    --color-card-bg: #ffffff;
+    --color-card-border: #e8e8ed;
+    --color-card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+    --ease-apple: cubic-bezier(0.28, 0, 0.22, 1);
+  }
+
+  .dark {
+    --color-bg: #000000;              /* Absolute Black */
+    --color-canvas: #121214;          /* Deep Dark */
+    --color-surface: #272729;         /* Graphite Surface A */
+    --color-surface-subtle: #262629;  /* Graphite Surface B */
+    --color-surface-elevated: #28282b;/* Graphite Surface C */
+    --color-surface-d: #2a2a2c;       /* Graphite Surface D */
+    
+    --color-fg: #f5f5f7;              /* Pale Apple Gray */
+    --color-fg-2: #e5e5ea;
+    --color-fg-muted: #86868b;        /* Mid Border Gray */
+    --color-fg-subtle: #6e6e73;       /* Secondary Neutral Gray */
+    
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-strong: rgba(255, 255, 255, 0.18);
+    
+    --color-accent: #0071e3;          /* Apple Action Blue */
+    --color-accent-hover: #0077ed;
+    --color-accent-active: #0066cc;
+    --color-accent-light: #2997ff;    /* High Luminance Link Blue */
+    
+    --color-card-bg: #272729;         /* Graphite Surface A */
+    --color-card-border: rgba(255, 255, 255, 0.1);
+    --color-card-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-dm-sans), "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 220ms cubic-bezier(0.28, 0, 0.22, 1), color 220ms cubic-bezier(0.28, 0, 0.22, 1);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes subtlePulseGlow {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.06); }
+}
+
+@keyframes emblemBreathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 35px rgba(0, 229, 153, 0.15); }
+  50% { transform: scale(1.02); box-shadow: 0 0 55px rgba(0, 229, 153, 0.3); }
+}
+
+.animate-shimmer {
+  animation: shimmerSweep 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-subtle-glow {
+  animation: subtlePulseGlow 4s ease-in-out infinite;
+}
+
+.animate-emblem-breathe {
+  animation: emblemBreathe 3.5s ease-in-out infinite;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Apple-style translucent scrollbars */
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: 980px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.apple-press {
+  transition: transform 120ms cubic-bezier(0.28, 0, 0.22, 1), opacity 120ms ease;
+}
+
+.apple-press:active {
+  transform: scale(0.97);
+}
+
+@keyframes appleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.apple-animate-page {
+  animation: appleFadeIn 180ms cubic-bezier(0.28, 0, 0.22, 1) forwards;
+}
+
+@page {
+  size: auto;
+  margin: 0;
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide web navbar, footers, export buttons and interactive controls in print/PDF */
+  header, nav, footer, .no-print, button, a[href*="api/export"] {
+    display: none !important;
+  }
+
+  main {
+    padding: 14mm 16mm !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure card containers look clean and don't break awkwardly across pages */
+  .card, [class*="rounded-"] {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+    border-color: #E2E8F0 !important;
+  }
+}
+
